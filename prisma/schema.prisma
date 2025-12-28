@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model SavedDomain {
+  id          Int      @id @default(autoincrement())
+  domain      String   @unique
+  available   Boolean?
+  checkedAt   DateTime?
+  createdAt   DateTime @default(now())
+  favorite    Boolean  @default(false)
+}
+
+model WordList {
+  id       Int    @id @default(autoincrement())
+  word     String
+  category String
+}
